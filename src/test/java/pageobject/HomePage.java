@@ -1,8 +1,7 @@
-package pageObject;
+package pageobject;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.WebDriverRunner;
 import utils.UiUtils;
 
 import static com.codeborne.selenide.Selenide.$;

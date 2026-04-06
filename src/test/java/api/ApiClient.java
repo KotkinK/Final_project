@@ -2,6 +2,7 @@ package api;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import models.RegistrationRequest;
 import models.UserData;
 import models.ListingData;
 
@@ -20,14 +21,11 @@ public class ApiClient {
     public static UserData registerUser(String email, String password) {
         System.out.println("User: " + email);
 
-        String body = String.format(
-                "{\"email\":\"%s\",\"password\":\"%s\",\"submitPassword\":\"%s\"}",
-                email, password, password
-        );
+        RegistrationRequest requestBody = new RegistrationRequest(email, password, password);
 
         Response response = given()
                 .contentType("application/json")
-                .body(body)
+                .body(requestBody)
                 .post("/signup")
                 .then().statusCode(201).extract().response();
 
